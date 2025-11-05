@@ -1,13 +1,14 @@
-FROM openjdk:17
+# Usa uma imagem Java 17 estável e mantida oficialmente
+FROM eclipse-temurin:17-jdk
 
-# Set the working directory in the container
+# Define o diretório de trabalho
 WORKDIR /ac2_ca
 
-# Copy the JAR file into the container at /educacaoGamificada
+# Copia o JAR gerado pelo Maven para dentro do container
 COPY target/*.jar /ac2_ca/ac2_ca-0.0.1-SNAPSHOT.jar
 
-# Expose the port that your application will run on
+# Expõe a porta que a aplicação usa
 EXPOSE 8585
 
-# Specify the command to run on container start
+# Comando padrão de inicialização da aplicação
 CMD ["java", "-jar", "ac2_ca-0.0.1-SNAPSHOT.jar"]
